@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>BOOKING FLIGHT</title>
+    <meta charset="utf-8"/>
+    <meta name="description" content="personal websites"/>
+    <meta name="author" content="ZiqiTang" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/log.css" type="text/css"/>
+    <link rel="stylesheet" href="css/photo.css" type="text/css"/>
+    <link rel="stylesheet" href="css/styles.css" type="text/css"/>
+    <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+        function golang(){
+            var status = document.getElementById('golangitem').style.display;
+            if (status=="none"){
+                document.getElementById("golangitem").style.display = "block";
+            }
+            else{
+                document.getElementById("golangitem").style.display = "none";
+            }
+        }
+    </script>
+
+</head>
+
+<body>
+<script src="js/top.js"></script>
+
+<div class="wholepart">
+    <header>
+        <h3>My study log</h3>
+    </header>
+    <nav>
+        <ul>
+            <li class="lidisplay"><a id="golang" href="#" onclick="golang()">&gt;</a>  <a href="#">Golang</a>
+                <ul id=golangitem>
+                    <li><a href="#">Interface</a></li>
+                </ul>
+            </li>
+            <li class="lidisplay"><a href="#">&gt;</a>  <a href="#">Cookie</a></li>
+            <li class="lidisplay"><a href="#">&gt;</a>  <a href="#">Session</a></li>
+        </ul>
+    </nav>
+    <article>
+        <h3>Golang | Interface</h3>
+        <p>
+            Go's interfaces let you use duck typing like you would in a purely dynamic language like Python but still have the compiler catch obvious mistakes like passing an int where an object with a Read method was expected, or like calling the Read method with the wrong number of arguments.
+        </p>
+    </article>
+</div>
+<!--footer-->
+<footer>
+    @Ziqi Tang
+</footer>
+<div>
+
+</div>
+
+
+</body>
+</html>

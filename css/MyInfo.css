@@ -1,0 +1,101 @@
+.wholepart{
+    position: fixed;
+    left: 5%;
+    width: 90%;
+    margin-top: 110px;
+    font-family: Courier;
+    background-color: aqua;
+    z-index: 99;
+    display: block;
+}
+
+.wholepart .left1{
+    position: absolute;
+    left:0;
+    top: 0;
+    width: 30%;
+    height: 320px;
+    text-align: center;
+}
+.left1 .img1{
+    width: 200px;
+    height: auto;
+    margin-bottom: 8px;
+}
+
+.left2{
+    display: block;
+    margin-bottom: 4px;
+}
+.left2 .img2{
+    position: absolute;
+    left: 30%;
+    text-align: center;
+    display: inline-block;
+    width: auto;
+    height: 18px;
+
+}
+.left2 a{
+    position: absolute;
+    display: inline-block;
+    text-decoration: none;
+    color: black;
+}
+#message:visited{/*why all links change color once I tap only one of them?*/
+    color: dimgray;
+    text-decoration: none;
+}
+#twitter:visited{
+    color: dimgray;
+    text-decoration: none;
+}
+#github:visited{
+    color: dimgray;
+    text-decoration: none;
+}
+.left2 a:hover{
+    color: aqua;
+    text-decoration: underline;
+}
+
+.wholepart .left3{
+    position: absolute;
+    left: 0;
+    top: 330px;
+    width: 30%;
+    border-top-width: 1px;
+    border-top-color: lightgray;
+    border-top-style: dashed;
+}
+.left3 h4{
+    display: inline;
+}
+.left3 p{
+    position: absolute;
+    left: 20%;
+    display: inline;
+}
+
+.wholepart .right{
+    position: absolute;
+    top: 0;
+    left: 35%;
+    width: 65%;
+    height: auto;
+    border-left-width: 1px;
+    border-left-color: lightgray;
+    border-left-style: dotted;
+}
+
+.right1{
+    margin: 0 6px;
+}
+.right1 h3{
+    border-bottom-width: 1px;
+    border-bottom-color: lightgray;
+    border-bottom-style: solid;
+}
+.right a{
+    text-decoration: none;
+}

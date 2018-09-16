@@ -1,0 +1,202 @@
+
+.talbeattr table, th, td{
+    border: 1px solid black;
+}
+.top{
+    width: 98%;
+    margin: 0 1%;
+    height: 73px;
+    background-color: white;
+    top: 0;
+    position: fixed;
+    z-index: 999;
+}
+.navli{
+
+    list-style: none;
+    display: inline-block; /*this line does not influence anything because each navli contains one tag*/
+    float: right;
+}
+.top .buttonnav{
+    background-color: white;
+    padding: 8px 16px;
+    text-align: center;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    text-decoration: none;
+
+}
+.top .buttonnav1{
+    color: rgba(41,40,41,0.87);
+    border: none;
+    float: left;
+    font-size: 40px;
+}
+.top .buttonnav2 {
+    color: black;
+    font-size: 16px;
+    float: right;
+
+}
+.buttonnav2:hover {
+    color: white;
+    margin: 3px 0px 0px 0px;
+    background-color: gray;
+}
+.buttonlogin{
+    color: black;
+    background-color: white;
+    padding: 8px 16px;
+    text-align: center;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    text-decoration: none;
+    float: right;
+    list-style: none;
+    text-decoration: none;
+    display: block;
+}
+.buttonmenu{
+    position: relative;
+}
+.loginitem {
+    display: none;
+    min-width: 100px;
+    position: absolute;
+    background-color: white;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+
+}
+.loginitem a{
+    color: black;
+    display: block;
+    padding: 8px 16px;
+    text-align: center;
+    transition-duration: 0.4s;
+    text-decoration: none;
+
+}
+.loginitem a:hover{ /*???*/
+    color: white;
+    background-color: gray;
+}
+.buttonmenu:hover .loginitem{
+    display: block;
+}
+.buttonmenu:hover .buttonlogin{
+    color: white;
+    margin: 3px 0px 0px 0px;
+    background-color: gray;
+}
+
+
+.headerdisplay{
+    background-color: gainsboro;
+    display: block;
+    height: 200px;
+    margin-top: 120px;
+
+}
+.headerdisplay h1{
+    color: white;
+    position: relative;
+    top: 30%;
+    text-align: center;
+    font-family: Courier;
+    font-size: 50px;
+    font-weight: lighter;
+    line-height: 80px;
+    display: block;
+}
+#go{
+    display: inline-block;
+    margin: 0 23%;
+    border-radius: 20px;
+    background-color: rgba(13, 14, 14, 0.3);
+    padding: 0 4px;
+}
+#go:hover{
+    cursor:pointer;
+}
+.headerdisplay img{
+/*making a map*/
+}
+
+
+.contentdisplay{
+
+    margin: 5% 2%;
+}
+.contentdisplay h1{
+    display: block;
+    border-bottom-color: lightgray;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+}
+.contentdisplay h1:hover{
+    cursor: pointer;
+}
+#album{
+}
+#album .imagelist{
+    position: relative;
+    display: inline-block;
+    *display: inline;
+    margin: 30px 20px;
+    width: 300px;
+    height: 300px;
+}
+
+.imagelist:hover{
+    cursor: pointer;
+}
+.imagelist a>img{  /*at top right corner name the picture*/
+    float: none;
+    margin: 30px 20px;
+    width: 300px;
+    height: 300px;
+    z-index: 1;
+}
+.imagelist .rectinlist{
+    display: inline-block;
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    width: 100%;
+    background-color: rgba(3, 4, 4, 0.3);
+    color: white;
+    z-index: 2;
+}
+
+#contact form {
+    margin:0 0 40px;
+    position: relative;
+}
+#contact form p{
+    position: relative;
+    left: 30%;
+    font-family: Courier;
+    font-size: medium;
+}
+#contact .text1{
+    position: relative;
+    left: 30%;
+    width: 40%;
+    height: 30px;
+    font-size: 28px;
+}
+#contact .submit1{
+    margin:10px;
+    position: absolute;
+    left: 47%;
+    text-align: center;
+    width: 60px;
+    height:25px;
+    font-size: medium;
+}
+.submit1:hover{
+    cursor: pointer;
+}
+
+
+
