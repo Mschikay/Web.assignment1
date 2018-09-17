@@ -1,19 +1,19 @@
 .wholepart{
     position: fixed;
-    left: 5%;
     width: 90%;
     margin-top: 110px;
     font-family: Courier;
     background-color: aqua;
     z-index: 99;
     display: block;
+    left: 0;
 }
 
 .wholepart .left1{
     position: absolute;
-    left:0;
+    left:40px;
     top: 0;
-    width: 30%;
+    width: 310px;
     height: 320px;
     text-align: center;
 }
@@ -26,10 +26,12 @@
 .left2{
     display: block;
     margin-bottom: 4px;
+    width: 310px;
+
 }
 .left2 .img2{
     position: absolute;
-    left: 30%;
+    left: 80px;
     text-align: center;
     display: inline-block;
     width: auto;
@@ -38,6 +40,7 @@
 }
 .left2 a{
     position: absolute;
+    left: 110px;
     display: inline-block;
     text-decoration: none;
     color: black;
@@ -61,27 +64,30 @@
 
 .wholepart .left3{
     position: absolute;
-    left: 0;
+    left: 40px;
     top: 330px;
-    width: 30%;
+    width: 310px;
     border-top-width: 1px;
     border-top-color: lightgray;
     border-top-style: dashed;
 }
+
 .left3 h4{
     display: inline;
+    margin:0 70px;
 }
 .left3 p{
     position: absolute;
-    left: 20%;
     display: inline;
+    text-align: center;
+    left: 70px;
 }
 
 .wholepart .right{
     position: absolute;
     top: 0;
-    left: 35%;
-    width: 65%;
+    left: 380px;
+    width: 800px;
     height: auto;
     border-left-width: 1px;
     border-left-color: lightgray;
@@ -98,4 +104,16 @@
 }
 .right a{
     text-decoration: none;
+}
+footer {
+    position: absolute;
+    text-align: center;
+    color: white;
+    background-color: black;
+    width: 100%;
+    bottom: 0;
+    z-index: 3;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
 }
