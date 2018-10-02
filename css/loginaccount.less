@@ -1,58 +1,15 @@
-
-.underlie{
-  @top: 30px;
-  display: block;
-  position: relative;
-  top: 127px;
-  width:100%;
-  height: auto;
-  background-color: lightgray;
-  z-index: 99;
-
-  .backimg{
+.background{
+  img{
     position: absolute;
-    left: 20%;
-    top: @top;
-  }
-  form{
-    position: absolute;
-    top: @top;
-    left: 60%;
-    display: block;
-    .vcode{
-      margin-top: 5px;
-      width: 50px;
-      height: auto;
-    }
-    p+input{
-      display: inline;
-      width: 150px;
-      text-align: left;
-    }
-    a{
-      text-decoration: none;
-      color: cornflowerblue;
-      font-size: small;
-    }
-    input{
-      font-size: large;
-      width: 65px;
-      text-align: center;
-    }
-    .tip{
-      font-size: small;
-      margin: 0;
-    }
+    width: 100%;
+    height: auto;
+    background-image: url("../img/background.jpg");
   }
 }
-footer {
-  color: white;
-  background-color: black;
-  text-align: center;
-  width: 100%;
-  bottom: 0;
-  z-index: 3;
-  display: inline-block;
+
+.vcode{
+  width: 50px;
+  height: auto;
 }
 
 

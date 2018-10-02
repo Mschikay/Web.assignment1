@@ -1,0 +1,366 @@
+Go's interfaces let you use duck typing like you would in a purely dynamic language like Python but still have the compiler catch obvious mistakes like passing an int where an object with a Read method was expected, or like calling the Read method with the wrong number of arguments.
+
+type Human struct {
+name string
+age int
+phone string
+}
+
+type Student struct {
+Human //匿名字段Human
+school string
+loan float32
+}
+
+type Employee struct {
+Human //匿名字段Human
+company string
+money float32
+}
+
+//Human对象实现Sayhi方法
+func (h *Human) SayHi() {
+fmt.Printf("Hi, I am %s you can call me on %s\n", h.name, h.phone)
+}
+
+// Human对象实现Sing方法
+func (h *Human) Sing(lyrics string) {
+fmt.Println("La la, la la la, la la la la la...", lyrics)
+}
+
+//Human对象实现Guzzle方法
+func (h *Human) Guzzle(beerStein string) {
+fmt.Println("Guzzle Guzzle Guzzle...", beerStein)
+}
+
+// Employee重载Human的Sayhi方法
+func (e *Employee) SayHi() {
+fmt.Printf("Hi, I am %s, I work at %s. Call me on %s\n", e.name,
+e.company, e.phone) //此句可以分成多行
+}
+
+//Student实现BorrowMoney方法
+func (s *Student) BorrowMoney(amount float32) {
+s.loan += amount // (again and again and...)
+}
+
+//Employee实现SpendSalary方法
+func (e *Employee) SpendSalary(amount float32) {
+e.money -= amount // More vodka please!!! Get me through the day!
+}
+
+// 定义interface
+type Men interface {
+SayHi()
+Sing(lyrics string)
+Guzzle(beerStein string)
+}
+
+type YoungChap interface {
+SayHi()
+Sing(song string)
+BorrowMoney(amount float32)
+}
+
+type ElderlyGent interface {
+SayHi()
+Sing(song string)
+SpendSalary(amount float32)
+}
+Interfaces make the code more flexible, scalable and it’s a way to achieve polymorphism in Golang. Instead of requiring a particular type, interfaces allow to specify that only some behaviour is needed. Behaviour is defined by set of methods:
+
+type I interface {
+f1(name string)
+f2(name string) (error, float32)
+f3() int64
+}
+No particular implementation is enforced. It’s enough that type defines methods with desired names and signatures (input and output parameters) to say it implements (satisfies) an interface:
+
+type T int64
+func (T) f1(name string) {
+fmt.Println(name)
+}
+func (T) f2(name string) (error, float32) {
+return nil, 10.2
+}
+func (T) f3() int64 {
+return 10
+}
+Type T satisfies interface I defined in the first snippet. Values of type T can be f.ex. passed to any function accepting I as a parameter (source code):
+
+type I interface {
+M() string
+}
+type T struct {
+name string
+}
+func (t T) M() string {
+return t.name
+}
+func Hello(i I) {
+fmt.Printf("Hi, my name is %s\n", i.M())
+}
+func main() {
+Hello(T{name: "Michał"}) // "Hi, my name is Michał"
+}
+In function Hello, method call i.M() is generalized in a way that methods from various types can be called as long as these methods are implemented by type satisfying an interface I.
+
+Prominent feature of Golang is that interfaces are implemented implicitly. Programmer doesn’t have to specify that type T implements interface I. That work is done by the Go compiler (never send a human to do a machine’s job). Really nice implication of this behaviours is the possibility to define interface which can be automatically implemented by the types already written (without any changes).
+
+Flexibility provided by interfaces comes from the fact that single type can implement many interfaces (code):
+
+type I1 interface {
+M1()
+}
+type I2 interface {
+M2()
+}
+type T struct{}
+func (T) M1() { fmt.Println("T.M1") }
+func (T) M2() { fmt.Println("T.M2") }
+func f1(i I1) { i.M1() }
+func f2(i I2) { i.M2() }
+func main() {
+t := T{}
+f1(t) // "T.M1"
+f2(t) // "T.M2"
+}
+or the same interface can be satisfied by many types (source code):
+
+type I interface {
+M()
+}
+type T1 struct{}
+func (T1) M() { fmt.Println("T1.M") }
+type T2 struct{}
+func (T2) M() { fmt.Println("T2.M") }
+func f(i I) { i.M() }
+func main() {
+f(T1{}) // "T1.M"
+f(T2{}) // "T2.M"
+}
+Besides methods required by one or more interfaces, type can freely implement other methods.
+In Go we’ve two concepts related to interfaces:
+
+Interface — set of methods required to implement such interface. It’s defined using keyword interface
+Interface type — variable of interface type which can hold any value implementing particular interface
+Let’s discuss these topics in next two sections.
+
+Defining an interface
+Declaration of the interface type specifies methods belonging to it. Method is defined by its name and signature — input and result parameters:
+
+type I interface {
+m1()
+m2(int)
+m3(int) int
+m4() int
+}
+Besides methods it’s allowed to embedded other interfaces — either defined in the same package or imported — using qualified name. It adds all methods from embedded interface:
+
+import "fmt"
+type I interface {
+m1()
+}
+type J interface {
+m2()
+I
+fmt.Stringer
+}
+Method set of interface J consists of:
+
+m1() (from embedded interface I)
+m2()
+String() string (from embedded interface Stringer)
+Order doesn’t matter so it’s possible to interleave method specifications and embedded interface types.
+
+Both exported (starting with uppercase letter) and non-exported (starting with lowercase letter) methods from embedded interface type are added.
+If I embeds an interface J which in turn embeds other interface K, then all methods from K will be also added to I:
+
+type I interface {
+J
+i()
+}
+type J interface {
+K
+j()
+}
+type K interface {
+k()
+}
+Method set of I contains of i(), j() and k() (source code).
+
+Circular embedding of interfaces is disallowed and will be detected while compilation (source code):
+
+type I interface {
+J
+i()
+}
+type J interface {
+K
+j()
+}
+type K interface {
+k()
+I
+}
+Compiler will raise an error interface type loop involving I.
+
+Interface methods must have unique names (source code):
+
+type I interface {
+J
+i()
+}
+type J interface {
+j()
+i(int)
+}
+Otherwise compile-time error will be thrown: duplicate method i.
+
+Composition of interfaces can be found throughout the standard library. One such example is io.ReadWriter:
+
+type ReadWriter interface {
+Reader
+Writer
+}
+We know how to create new interfaces. Let’s study now values of interface types…
+
+Interface type value
+Variable of interface type I can hold any value implementing I (source code):
+
+type I interface {
+method1()
+}
+type T struct{}
+func (T) method1() {}
+func main() {
+var i I = T{}
+fmt.Println(i)
+}
+Here we have variable i which is of interface type I.
+
+Static type vs dynamic type
+Variables have type known at compilation phase. It’s specified while declaration, never changes and is known as static type (or just type). Variables of interface type also have static type which is an interface itself. They additionally have dynamic type so the type of assigned value (source code):
+
+type I interface {
+M()
+}
+type T1 struct {}
+func (T1) M() {}
+type T2 struct {}
+func (T2) M() {}
+func main() {
+var i I = T1{}
+i = T2{}
+_ = i
+}
+Static type of variable i is I. It won’t change. Dynamic type on the other hand is … well dynamic. After first assignment, dynamic type of i is T1. It isn’t set in stone though so the second assignment changes dynamic type of i to T2. When value of interface type value is nil (which is zero value for interfaces) then dynamic type is not set.
+
+How to get dynamic type of interface type value?
+Package reflect can be used to achieve that (source code):
+
+fmt.Println(reflect.TypeOf(i).PkgPath(), reflect.TypeOf(i).Name())
+fmt.Println(reflect.TypeOf(i).String())
+Also fmt package is able to do that with format verb %T:
+
+fmt.Printf("%T\n", i)
+Under the hood it uses reflect package though but this method works even when i is nil.
+
+nil interface value
+This time we’ll start with an example (source code):
+
+type I interface {
+M()
+}
+type T struct {}
+func (T) M() {}
+func main() {
+var t *T
+if t == nil {
+fmt.Println("t is nil")
+} else {
+fmt.Println("t is not nil")
+}
+var i I = t
+if i == nil {
+fmt.Println("i is nil")
+} else {
+fmt.Println("i is not nil")
+}
+}
+Output:
+
+t is nil
+i is not nil
+It might be surprising at first. Value we’re assigning to i variable is nil but then i isn’t equal to nil. Interface type value consists of two components:
+
+dynamic type
+dynamic value
+Dynamic type has been discussed earlier (“Static type vs dynamic type” section). Dynamic value is the actual value assigned. In discussed snippet after assignment var i I = t, dynamic value of i is nil but dynamic type is *T. Function call fmt.Printf("%T\n", i) after this assignment would print *main.T. Interface type value is nil iff both dynamic value and dynamic type are nil. The effect is that even if interface type value holds a nil pointer then such interface value is not nil. Known mistake is to return not initialized, non-interface type value from function returning interface type (source code):
+
+type I interface {}
+type T struct {}
+func F() I {
+var t *T
+if false { // not reachable but it actually sets value
+t = &T{}
+}
+return t
+}
+func main() {
+fmt.Printf("F() = %v\n", F())
+fmt.Printf("F() is nil: %v\n", F() == nil)
+fmt.Printf("type of F(): %T", F())
+}
+It prints:
+
+F() =
+F() is nil: false
+type of F(): *main.T
+just because interface type value returned from function has dynamic type set (*main.T), it isn’t equal to nil.
+
+Empty interface
+Method set of interface doesn’t have to contain at least one member. It can be completely empty (source code):
+
+type I interface {}
+type T struct {}
+func (T) M() {}
+func main() {
+var i I = T{}
+_ = i
+}
+Empty interface is automatically satisfied by any type — so value of any type can be assigned to such interface type variable. The behaviour of dynamic or static types apply to empty interfaces in the same way as to non-empty interfaces. Prominent use of empty interface exists in variadic function fmt.Println.
+
+Satisfying an interface
+Every type which implements all interface’s method automatically satisfies such interface. We don’t need in these types use any other keywords like f.ex. implements in Java to say that type implements an interface. It’s automatically detected by Go compiler and it’s really powerful feature of the language (source code):
+
+import (
+"fmt"
+"regexp"
+)
+type I interface {
+Find(b []byte) []byte
+}
+func f(i I) {
+fmt.Printf("%s\n", i.Find([]byte("abc")))
+}
+func main() {
+var re = regexp.MustCompile(`b`)
+f(re)
+}
+Here we’ve defined an interface which is implemented f.ex. by regexp.Regexp type without any changes in built-in regexp module.
+
+Behaviours abstraction
+Interface type value gives access ONLY to methods of its interface type. It hides all details about the exact value like if it’s struct, array, scalar etc. (source code):
+
+type I interface {
+M1()
+}
+type T int64
+func (T) M1() {}
+func (T) M2() {}
+func main() {
+var i I = T(10)
+i.M1()
+i.M2() // i.M2 undefined (type I has no field or method M2)
+}

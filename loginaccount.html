@@ -1,36 +1,170 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="site-template.xsl"?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>BOOKING FLIGHT</title>
+    <title>personal website</title>
     <meta charset="utf-8"/>
-    <meta name="description" content="web service for booking a flight"/>
+    <meta name="description" content="front-end design of personal website"/>
     <meta name="author" content="ZiqiTang" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="css/styles.css" type="text/css"/>
-    <link rel="stylesheet/less" type="text/css" href="css/loginaccount.less" />
-    <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.7.1/less.min.js" ></script>
+    <link rel="stylesheet" type="text/css" href="css/loginaccount.css" />
+    <script type="text/javascript" src="js/popper.min.js"></script>
+    <script src="js/layout.js"></script>
 
 
+    <style>
+        #navBoard{
+            width: 100%;
+            height: auto;
+            position: fixed;
+            z-index: 999; /*Only when with "position" it is effective*/
+            /*background-color: greenyellow;*/
+        }
+        #navBoard #navContainer{
+        }
+        #navMask{
+            /*background-color: deepskyblue;*/
+            width: 100%;
+        }
+        #navContainer{
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+        #mainContainer .hold{
+            background-color: thistle;
+        }
+    </style>
 </head>
 
 <body>
-<script src="js/top.js"></script>
-<div class="underlie">
-    <img class="backimg" src="img/myinfobg.jpg" alt="background"/>
+<!--top navigation bar-->
+<div class="card">
+    <div id="navBoard">
+        <div id="navContainer" class="container">
+            <div class="row justify-content-start">
+                <!--left-top name-->
+                <div class="col-sm-auto">
+                    <a class="text-dark bg-white" href="index.html">
+                        <h1 class="buttonnav buttonnav1">Ziqi Tang</h1>
+                    </a>
+                </div>
+                <!--left-top table-->
+                <div class="col-sm-auto" >
+                    <table class="text-dark bg-white" class="tableAttr">
+                        <tr>
+                            <th>IS</th>
+                            <th>Course</th>
+                        </tr>
+                        <tr>
+                            <td>General</td>
+                            <td>INFSCI 2560</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
 
-    <form method="post" id="loginaccount">
-        <p>Email: </p><input type="email" name="Email"><br/>
-        <p>Password: </p><input type="password" name="psw"><br/>
-        <p>Verification Code: </p><input type="text" name="vcode"><br/>
-        <img class="vcode" src="img/vcode.jpg"/>
-        <p class="tip">Click to alter verification code</p>
-        <a href="#">Forget Password?</a><br/>
-        <input type="submit" name="submit" value="Submit">&nbsp;&nbsp;
-        <input type="submit" name="register" value="Register">
-    </form>
+            <!--right-bottom navigation-->
+            <div class="row no-gutters justify-content-end">
+                <div class="col-sm-1 border-left buttonLoginMenu menu"  onmouseenter="expand()" onmouseleave="collapse()">
+                    <a href="loginaccount.html">Login</a>
+                    <div class="loginitem">
+                        <a href="loginaccount.html" target="_self">Account</a>
+                        <!--<a href="#">QR code</a>-->
+                    </div>
+                </div>
+                <div class="col-sm-1  border-left buttonNavLi menu">
+                    <a href="photo.html" target="_self">Album</a>
+                </div>
+                <div class="col-sm-1 border-left buttonNavLi menu">
+                    <a href="log.html" target="_self">Log</a>
+                </div>
+                <div class="col-sm-1 border-left buttonNavLi menu">
+                    <a href="music.html" target="_self">Music</a>
+                </div>
+                <div id="aboutme" class="col-sm-1 border-left buttonNavLi menu">
+                    <a href="MyInfo.html" target="_self">About Me</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 
+<div id="navMask">
+</div>
+
+<div id="mainContainer" class="loadboard">
+    <div class="hold">
+        <div class="container">
+            <div class="row justify-content-center align-items-center loadmap">
+                <!--loading information-->
+                <!--left part with background image-->
+                <div class="col-sm-6 background">
+                    <img src="img/background.jpg" alt="background_cl"/>
+                </div>
+                <!--right part with loading information-->
+                <div class="col-sm-4">
+                    <form method="post" id="loginaccount">
+                        <div class="row justify-content-start">
+                            <div class="col-12"><p>Email: </p></div>
+                            <div class="col-md-auto col-12"><input type="email" name="Email"></div>
+                        </div>
+                        <div class="row justify-content-start">
+                            <div class="col-12"><p>Password: </p></div>
+                            <div class="col-md-auto col-12"><input type="password" name="psw"></div>
+                            <div class="col-auto">
+                                <a href="#">Forget Password?</a>
+                            </div>
+                        </div>
+                        <div class="row justify-content-start">
+                            <div class="col-12"><p>Verify: </p></div>
+                            <div class="col-md-auto col-12"><input type="text" name="vcode"></div>
+                        </div>
+                        <div class="row vcode justify-content-start">
+                            <div class="col-auto">
+                                <img src="img/vcode.jpg"/>
+                            </div>
+                        </div>
+                        <div class="row justify-content-start">
+                            <div class="col-auto">
+                                <p class="">Click to alter verification code</p>
+                            </div>
+                        </div>
+                        <div class="row justify-content-start">
+                        </div>
+                        <div class="row justify-content-start">
+                            <div class="col-auto">
+                                <input id="submit" type="submit" name="submit" value="Login">
+                            </div>
+                            <div class="col-auto">
+                                <input id="register" type="submit" name="register" value="Register">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="mainContainer1"></div>
+
+<!--footer-->
+<div class="footer card-footer text-muted">
+    <p>@Ziqi Tang <span id="time"></span></p>
+</div>
+<script>
+    var d = new Date();
+    document.getElementById("time").innerHTML = '<'+d.getFullYear()+'>';
+    //call the function as soon as window is loaded to render mask and save the original height value
+    window.onload = function(){
+        getHeight();
+        expand();
+        mainElemHeight("mainContainer");
+    }
+    window.addEventListener('resize',resize);
+    window.addEventListener('resize',mainElemHeight);
+
+</script>
 </body>
 </html>

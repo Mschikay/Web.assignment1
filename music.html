@@ -1,0 +1,192 @@
+<?xml-stylesheet type="text/xsl" href="site-template.xsl"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>personal website</title>
+    <meta charset="utf-8"/>
+    <meta name="description" content="front-end design of personal website"/>
+    <meta name="author" content="ZiqiTang" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/styles.css" type="text/css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="js/musicapi.js"></script>
+    <script src="js/layout.js"></script>
+
+
+    <style>
+        #navBoard{
+            width: 100%;
+            height: auto;
+            position: fixed;
+            z-index: 999; /*Only when with "position" it is effective*/
+            /*background-color: greenyellow;*/
+        }
+        #navBoard #navContainer{
+        }
+        #navMask{
+            /*background-color: deepskyblue;*/
+            width: 100%;
+        }
+        #mainContainer{
+            margin-top: 8px;
+            /*background-color: yellow;*/
+        }
+        #musicContainer > #musicMenu{
+            background-color: purple;
+            border-radius: 4px;
+            margin: 8px 0;
+            color: white;
+        }
+        #musicContainer > #musicList {
+            background-color: thistle;
+            border-radius: 4px;
+            margin: 4px 0;
+        }
+        #musicList .col-sm-3{
+            overflow: auto;
+        }
+        .col-sm-3 button{
+            border: none;
+            background-color: thistle;
+        }
+        .col-sm-3 button:hover{
+            cursor: pointer;
+        }
+        .col-sm-2 button{
+            border: none;
+            background-color: thistle;
+        }
+        .col-sm-2 button:hover{
+            cursor: pointer;
+        }
+        .col-sm-1 button{
+            border: none;
+            background-color: thistle;
+        }
+        .col-sm-1 button:hover{
+            cursor: pointer;
+        }
+        .clicktodisplay{
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+<!--top navigation bar-->
+<div class="card">
+<div id="navBoard">
+    <div id="navContainer" class="container" style="background-color: rgba(255, 255, 255, 0.8)">
+        <div class="row justify-content-start">
+            <!--left-top name-->
+            <div class="col-sm-auto">
+                <a class="text-dark bg-white" href="index.html">
+                    <h1 class="buttonnav buttonnav1">Ziqi Tang</h1>
+                </a>
+            </div>
+            <!--left-top table-->
+            <div class="col-sm-auto" >
+                <table class="text-dark bg-white" class="tableAttr">
+                    <tr>
+                        <th>IS</th>
+                        <th>Course</th>
+                    </tr>
+                    <tr>
+                        <td>General</td>
+                        <td>INFSCI 2560</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!--right-bottom navigation-->
+        <div class="row no-gutters justify-content-end">
+            <div class="col-sm-1 border-left buttonLoginMenu menu"  onmouseenter="expand()" onmouseleave="collapse()">
+                <a href="loginaccount.html">Login</a>
+                <div class="loginitem">
+                    <a href="loginaccount.html" target="_self">Account</a>
+                    <a href="#">QR code</a>
+                </div>
+            </div>
+            <div class="col-sm-1  border-left buttonNavLi menu">
+                <a href="photo.html" target="_self">Album</a>
+            </div>
+            <div class="col-sm-1 border-left buttonNavLi menu">
+                <a href="log.html" target="_self">Log</a>
+            </div>
+            <div class="col-sm-1 border-left buttonNavLi menu">
+                <a href="music.html" target="_self">Music</a>
+            </div>
+            <div id="aboutme" class="col-sm-1 border-left buttonNavLi menu">
+                <a href="MyInfo.html" target="_self">About Me</a>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+<div id="navMask">
+</div>
+
+<div id="mainContainer" >
+    <!--Menu of music list-->
+    <div class="container" id="musicContainer">
+        <div class="row justify-content-center" id="musicMenu">
+            <div class="col-sm-3">
+                <span>Name</span>
+            </div>
+            <div class="col-sm-3">
+                <span>Artist</span>
+            </div>
+            <div class="col-sm-3">
+                <span>Lyrics</span>
+            </div>
+            <div class="col-sm-2">
+                <span>Comments</span>
+            </div>
+            <div class="col-sm-1">
+            </div>
+        </div>
+        <!--Song list-->
+        <div class="row justify-content-center align-items-end" id="musicList">
+            <div class="col-sm-3">
+                Wish you were here
+            </div>
+            <div class="col-sm-3">
+                <span>Pink Floyd</span>
+            </div>
+            <div class="col-sm-3">
+                <button onclick="getMusicLyric(this.value)" value="4237923">click</button>
+            </div>
+            <div class="col-sm-2">
+                <button onclick="getMusicComment('4237923')" value="4237923" >click</button>
+            </div>
+            <div class="col-sm-1">
+                <button onclick="close()">∧</button>
+            </div>
+            <div class='clicktodisplay' id="4237923"></div>
+        </div>
+    </div>
+</div>
+
+<!--footer-->
+<div class="footer card-footer text-muted">
+    <p>@Ziqi Tang <span id="time"></span></p>
+</div>
+<script>
+    var d = new Date();
+    document.getElementById("time").innerHTML = '<'+d.getFullYear()+'>';
+    //call the function as soon as window is loaded to render mask and save the original height value
+    window.onload = function(){
+        getHeight();
+        expand();
+        mainElemHeight("mainContainer");
+    }
+    window.addEventListener('resize',resize);
+    window.addEventListener('resize',mainElemHeight);
+
+</script>
+</body>
+</html>

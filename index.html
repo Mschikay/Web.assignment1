@@ -7,81 +7,220 @@
     <meta name="description" content="front-end design of personal website"/>
     <meta name="author" content="ZiqiTang" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="css/styles.css" type="text/css"/>
-    <link rel="stylesheet" href="css/log.css" type="text/css"/>
+    <script src="js/layout.js"></script>
 
-    <script>
-    </script>
+
+    <style>
+        #navBoard{
+            width: 100%;
+            height: auto;
+            position: fixed;
+            z-index: 999; /*Only when with "position" it is effective*/
+            /*background-color: greenyellow;*/
+        }
+        #navBoard #navContainer{
+        }
+        #navMask{
+            /*background-color: deepskyblue;*/
+            width: 100%;
+        }
+        #navContainer{
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+    </style>
 </head>
 
 <body>
 <!--top navigation bar-->
-<script src="js/top.js"></script>
-<!--central background image-->
-<div class="headerdisplay">
-    <h1>
-        <div id="go">
-        Welcome to my world<br/>
-        </div>
-    </h1>
-</div>
-
-<div class="contentdisplay">
-    <!--albums display-->
-    <div id="album">
-        <h1>Album</h1>
-        <div style="text-align: center">
-            <div class="imagelist">
-                <p class="rectinlist">Junior school</p>
-                <a href="#"><img id="london" src="img/ms.jpg" alt="Middle school" title="Middle school"></a>
+<div class="card">
+    <div id="navBoard">
+        <div id="navContainer" class="container">
+            <div class="row justify-content-start">
+                <!--left-top name-->
+                <div class="col-sm-auto">
+                    <a class="text-dark bg-white" href="index.html">
+                        <h1 class="buttonnav buttonnav1">Ziqi Tang</h1>
+                    </a>
+                </div>
+                <!--left-top table-->
+                <div class="col-sm-auto" >
+                    <table class="text-dark bg-white" class="tableAttr">
+                        <tr>
+                            <th>IS</th>
+                            <th>Course</th>
+                        </tr>
+                        <tr>
+                            <td>General</td>
+                            <td>INFSCI 2560</td>
+                        </tr>
+                    </table>
+                </div>
             </div>
 
-            <div class="imagelist">
-                <p class="rectinlist">High School</p>
-                <a href="#"><img id="br/azil" src="img/sz.png" alt="High School" title="High School"></a>
-            </div>
-            <div class="imagelist">
-                <p class="rectinlist">CSU</p>
-                <a href="#"><img id="tibet" src="img/csu.jpg" alt="CSU" title="CSU"></a>
-            </div>
-        </div>
-        <div style="text-align: center">
-            <div class="imagelist">
-                <p class="rectinlist">In Egypt</p>
-                <a href="#"><img id="egypt" src="img/egypt.jpg" alt="egypt" title="Egypt"></a>
-            </div>
-            <div class="imagelist">
-                <p class="rectinlist">In South Africa</p>
-                <a href="#"><img id="southafrica" src="img/southafrica.jpg" alt="southafrica" title="South Africa"></a>
-            </div>
-            <div class="imagelist">
-                <p class="rectinlist">In Europe</p>
-                <a href="photo.html"><img id="ireland" src="img/ireland.jpg" alt="europe" title="europe"></a>
+            <!--right-bottom navigation-->
+            <div class="row no-gutters justify-content-end">
+                <div class="col-sm-1 border-left buttonLoginMenu menu"  onmouseenter="expand()" onmouseleave="collapse()">
+                    <a href="loginaccount.html">Login</a>
+                    <div class="loginitem">
+                        <a href="loginaccount.html" target="_self">Account</a>
+                        <!--<a href="#">QR code</a>-->
+                    </div>
+                </div>
+                <div class="col-sm-1  border-left buttonNavLi menu">
+                    <a href="photo.html" target="_self">Album</a>
+                </div>
+                <div class="col-sm-1 border-left buttonNavLi menu">
+                    <a href="log.html" target="_self">Log</a>
+                </div>
+                <div class="col-sm-1 border-left buttonNavLi menu">
+                    <a href="music.html" target="_self">Music</a>
+                </div>
+                <div id="aboutme" class="col-sm-1 border-left buttonNavLi menu">
+                    <a href="MyInfo.html" target="_self">About Me</a>
+                </div>
             </div>
         </div>
     </div>
+</div>
+
+
+<div id="navMask">
+</div>
+
+<!--central background image-->
+    <div class="container" style="padding:8px 8px; font-weight: lighter;">
+        <div class="row" id="nav_padding"></div>
+        <div class="row justify-content-center" style="padding: 8px 0; margin: 5px 0; background-color: purple;">
+            <div id="col-sm-6" >
+                <h1 id="go" style="color: white">
+                    Welcome to my world<br/>
+                </h1>
+            </div>
+        </div>
+        <br/><br/>
+    </div>
+
+    <!--Album-->
+    <div class="container">
+        <!--Album Title-->
+        <div class="row">
+            <div class="col-12">
+                <h1 id="album">Album</h1>
+            </div>
+        </div>
+        <!--display Album cover-->
+        <div class="row justify-content-around" style="padding:0 0 8px">
+            <div class="col-12 col-sm-4 ">
+                <a class="albuma" href="#">
+                    <img class="albumimg img-thumbnail" id="middles" src="img/ms.jpg" alt="Middle school" title="Middle school">
+                    <p class="">Junior school</p>
+                </a>
+            </div>
+            <div class="col-12 col-sm-4">
+                <a class="albuma" href="#">
+                    <img class="albumimg img-thumbnail" id="highs" src="img/sz.png" alt="High School" title="High School">
+                    <p class="">High School</p>
+                </a>
+            </div>
+            <div class="col-12 col-sm-4">
+                <a class="albuma" href="#">
+                    <img class="albumimg img-thumbnail" id="csu" src="img/csu.jpg" alt="CSU" title="CSU">
+                    <p class="">CSU</p>
+                </a>
+            </div>
+
+
+            <div class="col-12 col-sm-4" >
+                <a class="albuma" href="#">
+                    <img class="albumimg img-thumbnail" id="egypt" src="img/egypt.jpg" alt="egypt" title="Egypt">
+                    <p>In Egypt</p>
+                </a>
+            </div>
+
+
+            <div class="col-12 col-sm-4">
+                <a class="albuma" href="#">
+                    <img class="albumimg img-thumbnail" id="southafrica" src="img/southafrica.jpg" alt="southafrica" title="South Africa">
+                    <p class="">In South Africa</p>
+                </a>
+            </div>
+            <div class="col-12 col-sm-4">
+                <a class="albuma" href="photo.html">
+                    <img class="albumimg img-thumbnail" id="europe" src="img/ireland.jpg" alt="europe" title="europe">
+                    <p class="">In Europe</p>
+                </a>
+            </div>
+        </div>
+        <br/>
+        <br/>
+    </div>
+
     <!--contact display-->
-    <div id="contact">
-        <h1>Contact</h1>
-        <div>
-            <p style="text-align: center; font-family: Courier; font-size: 20px;">
+    <div class="container">
+        <!--contact title-->
+        <div class="row">
+            <div class="col-12">
+                <h1 id="contact">Contact</h1>
+            </div>
+        </div>
+        <!--contact tips-->
+        <div class="row justify-content-center">
+            <p style="font-size: 20px;">
                 Please leave a message if you have questions or problems.</p>
+        </div>
+
+        <!--For visitors to submit messages to me-->
+        <div>
             <form method="post" id="submitmsg">
-                <p>First Name:</p><input class="text1" type="text" name="First Name"><br/>
-                <p>Last Name:</p><input class="text1" type="text" name="Last Name"><br/>
-                <p>Email:</p><input class="text1" type="text" name="Email"><br/>
-                <p>Message:</p><input class="text1" type="text" name="Message"><br/>
-                <input class="submit1" type="submit" name="submit" value="Submit" onclick="get()"><br/>
+                <div class="row justify-content-center formitemmargin">
+                    <p class="col-sm-3">First Name:</p>
+                    <input class="col-sm-5" type="text" name="First Name">
+
+                </div>
+
+                <div class="row justify-content-center formitemmargin">
+                    <p class="col-sm-3">Last Name:</p>
+                    <input class="col-sm-5" type="text" name="Last Name">
+
+                </div>
+
+                <div class="row justify-content-center formitemmargin">
+                    <p class="col-sm-3">Email:</p>
+                    <input class="col-sm-5" type="text" name="Email">
+                </div>
+
+                <div class="row justify-content-center formitemmargin">
+                    <p class="col-sm-3">Message:</p>
+                    <input class="col-sm-5" type="text" name="Message">
+                </div>
+                <div class="row justify-content-center formitemmargin">
+                    <input class="col-sm-auto submit1" type="submit" name="submit" value="Submit" onclick="get()">
+                </div>
             </form>
         </div>
+        <br/>
+        <br/>
     </div>
+
+<!--footer-->
+<div class="footer card-footer text-muted">
+    <p>@Ziqi Tang<span id="time"></span></p>
 </div>
+<script>
+    var d = new Date();
+    document.getElementById("time").innerHTML = '<'+d.getFullYear()+'>';
 
-<footer>
-        @Ziqi Tang
-</footer>
+    //call the function as soon as window is loaded to render mask and save the original height value
+    window.onload = function(){
+        getHeight();
+        expand();
+        mainElemHeight("mainContainer");
+    }
+    window.addEventListener('resize',resize);
+    window.addEventListener('resize',mainElemHeight);
 
-
-
+</script>
 </body>
 </html>

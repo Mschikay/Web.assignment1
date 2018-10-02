@@ -1,41 +1,5 @@
-.wholepart{
-    position: relative;
-    left: 5%;
-    width: 90%;
-    margin-top: 110px;
-    font-family: Courier;
-    z-index: 99;
-    display: block;
-}
-.head{
-    width: 100%;
-}
-.head svg{
-    position: absolute;
-    left: 94%;
-}
-.photoinfo{
-    font-family: Courier;
-    font-size: small;
-    color: #999999;
-    border-bottom-style: solid;
-    border-bottom-color: lightgray;
-    border-bottom-width: 1px;
-}
 
-.wholepart .content{
-    list-style: none;
-    text-align: center;
-}
-
-.content img{
-    display: inline-block;
-    *display: inline;
-    margin: 10px 40px;
-    width: 200px;
-    height: auto;
-}
-.content .rb{
+.rb{
     border-style: none;
     position:absolute;
     right: 0;
@@ -44,7 +8,7 @@
 .rb:hover{
     cursor: pointer;
 }
-.content .lb{
+.lb{
     border-style: none;
     position:absolute;
     left: 0;
@@ -53,10 +17,8 @@
 .lb:hover{
     cursor: pointer;
 }
-.wholepart .comment{
-    width: 100%;
 
-}
+
 .comment textarea{
     border-color: gray;
     border-radius: 4px;

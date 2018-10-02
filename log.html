@@ -1,57 +1,172 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="site-template.xsl"?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>personal websites</title>
+    <title>personal website</title>
     <meta charset="utf-8"/>
-    <meta name="description" content="front-end design of personal websites"/>
+    <meta name="description" content="front-end design of personal website"/>
     <meta name="author" content="ZiqiTang" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/log.css" type="text/css"/>
-    <link rel="stylesheet" href="css/photo.css" type="text/css"/>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="css/styles.css" type="text/css"/>
-    <script type="text/javascript" src="http://www.google.com/jsapi"></script>
-    <!--control the show and hidden of hints-->
-    <script type="text/javascript">
-        function golang(){
-            var status = document.getElementById('golangitem').style.display;
-            if (status=="none"){
-                document.getElementById("golangitem").style.display = "block";
-            }
-            else{
-                document.getElementById("golangitem").style.display = "none";
-            }
-        }
-    </script>
+    <link rel="stylesheet" href="css/log.css" type="text/css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="js/layout.js"></script>
 
+    <style>
+        #navBoard{
+            width: 100%;
+            height: auto;
+            position: fixed;
+            z-index: 9; /*Only when with "position" it is effective*/
+            /*background-color: greenyellow;*/
+        }
+        #navBoard > #processBar{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width:100%;
+            height:4px;
+            background-color: purple;
+        }
+        #navBoard #navContainer{
+        }
+        #navMask{
+            /*background-color: deepskyblue;*/
+            width: 100%;
+        }
+        #mainContainer{
+            margin-top: 8px;
+        }
+        p > iframe{
+            background-color: thistle;
+            width: 100%;
+            height: 500px;
+        }
+    </style>
 </head>
 
-<body>
-<!--top navigation bar-->
-<script src="js/top.js"></script>
+<body onscroll="process()">
+<!--display the process of reading-->
 
-<div class="wholepart">
-    <header>
-        <h3>My study log</h3>
-    </header>
-    <nav>
-        <ul>
-            <li class="lidisplay"><a id="golang" href="#" onclick="golang()">&gt;</a>  <a href="#">Golang</a>
-                <ul id=golangitem>
-                    <li><a href="#">Interface</a></li>
-                </ul>
-            </li>
-            <li class="lidisplay"><a href="#">&gt;</a>  <a href="#">Cookie</a></li>
-            <li class="lidisplay"><a href="#">&gt;</a>  <a href="#">Session</a></li>
-        </ul>
-    </nav>
-    <article>
-        <h3>Golang | Interface</h3>
-        <p>
-            Go's interfaces let you use duck typing like you would in a purely dynamic language like Python but still have the compiler catch obvious mistakes like passing an int where an object with a Read method was expected, or like calling the Read method with the wrong number of arguments.
-        </p>
-    </article>
+<!--top navigation bar-->
+<div class="card">
+    <div id="navBoard">
+        <!--<div id="processBar"></div>-->
+
+        <div id="navContainer" class="container" style="background-color: rgba(255, 255, 255, 0.8)">
+            <div class="row justify-content-start">
+                <!--left-top name-->
+                <div class="col-sm-auto">
+                    <a class="text-dark bg-white" href="index.html">
+                        <h1 class="buttonnav buttonnav1">Ziqi Tang</h1>
+                    </a>
+                </div>
+                <!--left-top table-->
+                <div class="col-sm-auto" >
+                    <table class="text-dark bg-white" class="tableAttr">
+                        <tr>
+                            <th>IS</th>
+                            <th>Course</th>
+                        </tr>
+                        <tr>
+                            <td>General</td>
+                            <td>INFSCI 2560</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <!--right-bottom navigation-->
+            <div class="row no-gutters justify-content-end">
+                <div class="col-sm-1 border-left buttonLoginMenu menu"  onmouseenter="expand()" onmouseleave="collapse()">
+                    <a href="loginaccount.html">Login</a>
+                    <div class="loginitem">
+                        <a href="loginaccount.html" target="_self">Account</a>
+                        <!--<a href="#">QR code</a>-->
+                    </div>
+                </div>
+
+                <div class="col-sm-1  border-left buttonNavLi menu">
+                    <a href="photo.html" target="_self">Album</a>
+                </div>
+                <div class="col-sm-1 border-left buttonNavLi menu">
+                    <a href="log.html" target="_self">Log</a>
+                </div>
+                <div class="col-sm-1 border-left buttonNavLi menu">
+                    <a href="music.html" target="_self">Music</a>
+                </div>
+                <div id="aboutme" class="col-sm-1 border-left buttonNavLi menu">
+                    <a href="MyInfo.html" target="_self">About Me</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
+<!--add a node div here to make a mask for navigation bar-->
+<div id="mainContainer" >
+    <div class="container blank">
+    </div>
+    <!--content-->
+    <div class="container">
+        <div class="row justify-content-start">
+            <h3>Everything I record</h3>
+        </div>
+        <div class="row justify-content-center ">
+            <div class="col-sm-12">
+                <ol id="articleMenu" class="breadcrumb">
+                    <li class="disabled">
+                        <a href="#">All</a>
+                        <span>&gt;</span>
+                    </li>
+                    <li class="disabled">
+                        <a href="#">Technical</a>
+                        <span>&gt;</span>
+                    </li>
+                    <li class="disabled">
+                        <a href="#">Golang</a>
+                        <span>&gt;</span>
+                    </li>
+                    <li class="active" >
+                        Interface
+                    </li>
+                </ol>
+
+
+                <article id="article">
+                    <h3>Interface</h3>
+                    <p>
+                        <iframe id="articleFrame" frameborder=0 src="txt/interface.txt"></iframe>
+                    </p>
+                </article>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--footer-->
+<div class="footer card-footer text-muted">
+    <p>@Ziqi Tang <span id="time"></span></p>
+    <script>
+        var d = new Date();
+        document.getElementById("time").innerHTML = '<'+d.getFullYear()+'>';
+    </script>
+</div>
+
+<script>
+    var mask = document.createElement('div');
+    mask.id = "navMask";
+    var element = document.getElementsByTagName("body")[0];
+    element.insertBefore(mask, document.getElementById("mainContainer"))
+
+    window.onload = function(){
+        getHeight();
+        expand();
+        mainElemHeight("mainContainer");
+    }
+    window.addEventListener('resize',resize);
+    window.addEventListener('resize',mainElemHeight);
+</script>
 </body>
 </html>

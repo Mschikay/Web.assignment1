@@ -1,7 +1,7 @@
 ### This is Ziqi Tang's personal website
 
 #### 1. index.html
-In this home page, you can click Account button below the "Login"(when your mouse hover over the Login), "About me", Log, album named "In Europe". Click "Ziqi Tang" for returning to home page.
+In this home page, you can click Account button below the "Login"(when your mouse hover over the Login), "About me", "Log", "music", album named "In Europe" inside the page. Click "Ziqi Tang" for returning to home page.
 #### 2. Login
 Login is for people to have an account to leave a message for me. Nothing special.
 #### 3. About me
@@ -10,3 +10,5 @@ In this page, you can see my general information. The educational information is
 This is my study notes. At the left part, you can see the classification of my articles and their titles. The article titles can be hidden inside the classification name.
 #### 5. In Europe album
 It is for displaying some images. People can leave a comment. 
+#### 6. Music
+You can see what music I like listening. The source is from Wangyiyun api. 

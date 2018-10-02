@@ -1,0 +1,26 @@
+.content{
+}
+
+.background{
+}
+.background > img{
+    width: 100%;
+    height: auto;
+}
+.loadboard{
+    margin: 30px 0;
+    width: 100%;
+}
+
+.vcode img{
+    width: 50px;
+    height: 25px;
+}
+#submit, #register{
+    border-radius: 4px;
+}
+#submit:hover, #register:hover{
+    cursor: pointer;
+    background-color: thistle;
+    transition-duration: 0.4s;
+}

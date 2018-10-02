@@ -1,49 +1,28 @@
-.wholepart{
-    position: fixed;
-    width: 90%;
-    margin-top: 110px;
-    font-family: Courier;
-    background-color: aqua;
-    z-index: 99;
-    display: block;
-    left: 0;
-}
+/*.wholepart{*/
+    /*position: fixed;*/
+    /*width: 90%;*/
+    /*margin-top: 110px;*/
+    /*font-family: Courier;*/
+    /*background-color: aqua;*/
+    /*z-index: 99;*/
+    /*display: block;*/
+    /*left: 0;*/
+/*}*/
 
-.wholepart .left1{
-    position: absolute;
-    left:40px;
-    top: 0;
-    width: 310px;
-    height: 320px;
-    text-align: center;
-}
-.left1 .img1{
-    width: 200px;
-    height: auto;
-    margin-bottom: 8px;
-}
-
-.left2{
-    display: block;
-    margin-bottom: 4px;
-    width: 310px;
-
-}
-.left2 .img2{
-    position: absolute;
-    left: 80px;
-    text-align: center;
-    display: inline-block;
-    width: auto;
-    height: 18px;
-
-}
-.left2 a{
-    position: absolute;
-    left: 110px;
-    display: inline-block;
-    text-decoration: none;
-    color: black;
+/*.wholepart .left1{*/
+    /*position: absolute;*/
+    /*left:40px;*/
+    /*top: 0;*/
+    /*width: 310px;*/
+    /*height: 320px;*/
+    /*text-align: center;*/
+/*}*/
+/*.col-sm-2 > img{*/
+    /*width: 20px;*/
+    /*height: auto;*/
+/*}*/
+.margintop{
+    margin-top: 6px;
 }
 #message:visited{/*why all links change color once I tap only one of them?*/
     color: dimgray;
@@ -57,63 +36,9 @@
     color: dimgray;
     text-decoration: none;
 }
-.left2 a:hover{
-    color: aqua;
-    text-decoration: underline;
-}
 
-.wholepart .left3{
-    position: absolute;
-    left: 40px;
-    top: 330px;
-    width: 310px;
-    border-top-width: 1px;
-    border-top-color: lightgray;
-    border-top-style: dashed;
-}
-
-.left3 h4{
-    display: inline;
-    margin:0 70px;
-}
-.left3 p{
-    position: absolute;
-    display: inline;
-    text-align: center;
-    left: 70px;
-}
-
-.wholepart .right{
-    position: absolute;
-    top: 0;
-    left: 380px;
-    width: 800px;
-    height: auto;
-    border-left-width: 1px;
-    border-left-color: lightgray;
-    border-left-style: dotted;
-}
-
-.right1{
-    margin: 0 6px;
-}
-.right1 h3{
-    border-bottom-width: 1px;
-    border-bottom-color: lightgray;
-    border-bottom-style: solid;
-}
-.right a{
-    text-decoration: none;
-}
-footer {
-    position: absolute;
-    text-align: center;
-    color: white;
-    background-color: black;
-    width: 100%;
-    bottom: 0;
-    z-index: 3;
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
+.img1{
+    display: inline-block;
+    width: 50px;
+    height:50px;
 }

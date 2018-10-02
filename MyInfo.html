@@ -1,73 +1,217 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="site-template.xsl"?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>BOOKING FLIGHT</title>
+    <title>personal website</title>
     <meta charset="utf-8"/>
-    <meta name="description" content="web service for booking a flight"/>
+    <meta name="description" content="front-end design of personal website"/>
     <meta name="author" content="ZiqiTang" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/MyInfo.css" type="text/css"/>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="css/styles.css" type="text/css"/>
+    <link rel="stylesheet" href="css/MyInfo.css.css" type="text/css"/>
+    <script src="js/layout.js"></script>
 
-    <script>
-    </script>
+    <style>
+        #navBoard{
+            width: 100%;
+            height: auto;
+            position: fixed;
+            z-index: 999; /*Only when with "position" it is effective*/
+            /*background-color: greenyellow;*/
+        }
+        #navBoard #navContainer{
+        }
+        #navMask{
+            /*background-color: deepskyblue;*/
+            width: 100%;
+        }
+        #navContainer{
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+    </style>
+
 </head>
 
 <body>
-<script src="js/top.js"></script>
+<!--top navigation bar-->
+<div class="card">
+    <div id="navBoard">
+        <div id="navContainer" class="container">
+            <div class="row justify-content-start">
+                <!--left-top name-->
+                <div class="col-sm-auto">
+                    <a class="text-dark bg-white" href="index.html">
+                        <h1 class="buttonnav buttonnav1">Ziqi Tang</h1>
+                    </a>
+                </div>
+                <!--left-top table-->
+                <div class="col-sm-auto" >
+                    <table class="text-dark bg-white" class="tableAttr">
+                        <tr>
+                            <th>IS</th>
+                            <th>Course</th>
+                        </tr>
+                        <tr>
+                            <td>General</td>
+                            <td>INFSCI 2560</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
 
-<div class="wholepart">
-    <!--left part-->
-    <section class="left1">
-
-        <p>Ziqi's profile</p>
-        <img class="img1" src="img/me.jpg" alt="ziqitang's photo">
-
-        <div class="left2">
-            <img class="img2" src="img/message.jpg" alt="ziqitang's message">
-            <a id="message" href="#">Message</a><br/>
+            <!--right-bottom navigation-->
+            <div class="row no-gutters justify-content-end">
+                <div class="col-sm-1 border-left buttonLoginMenu menu"  onmouseenter="expand()" onmouseleave="collapse()">
+                    <a href="loginaccount.html">Login</a>
+                    <div class="loginitem">
+                        <a href="loginaccount.html" target="_self">Account</a>
+                        <!--<a href="#">QR code</a>-->
+                    </div>
+                </div>
+                <div class="col-sm-1  border-left buttonNavLi menu">
+                    <a href="photo.html" target="_self">Album</a>
+                </div>
+                <div class="col-sm-1 border-left buttonNavLi menu">
+                    <a href="log.html" target="_self">Log</a>
+                </div>
+                <div class="col-sm-1 border-left buttonNavLi menu">
+                    <a href="music.html" target="_self">Music</a>
+                </div>
+                <div id="aboutme" class="col-sm-1 border-left buttonNavLi menu">
+                    <a href="MyInfo.html" target="_self">About Me</a>
+                </div>
+            </div>
         </div>
-        <div class="left2">
-            <img class="img2" src="img/twitter.png" alt="ziqitang's twitter">
-            <a id="twitter" href="#">Twitter</a><br/>
-        </div>
-        <div class="left2">
-            <img class="img2" src="img/github.jpg" alt="ziqitang's github">
-            <a id="github" href="https://github.com/Mschikay">Github</a><br/>
-        </div>
-    </section>
-
-    <section class="left3">
-        <br/>
-        <h4>Contact me</h4><br/>
-        <p><span style="font-weight: normal">Email: </span>zit10@pitt.edu</p><br/>
-        <p><span style="font-weight: normal">Cell: </span>412-773-4353</p><br/>
-    </section>
-
-    <!--right part-->
-    <section class="right">
-        <div class="right1">
-            <h3>Basic Information</h3>
-            <p><span style="font-weight: normal">Country: </span>China</p>
-            <p><span style="font-weight: normal">City: </span>Shenzhen</p>
-            <p><span style="font-weight: normal">Major: </span>Information Science</p>
-            <p><span style="font-weight: normal">Hobbies: </span>Swimming, Science fiction</p>
-        </div>
-        <div class="right1">
-            <h3>Education Information</h3>
-            <p style="font-weight: normal">Undergraduate:<a href="http://en.csu.edu.cn/">Central South University</a></p>
-            <p style="font-weight: normal">Graduate:<a href="https://www.pitt.edu/">University of Pittsburgh</a></p>
-        </div>
-        <div class="right1">
-            <h3>Work Experience</h3>
-            <p style="font-weight: normal">Internship:
-            <a href="http://www.cuhk.edu.hk/english/index.html">The Chinese University of Hong Kong</a> </p>
-        </div>
-    </section>
+    </div>
 </div>
 
-<footer>@Ziqi Tang</footer><!--why the footer is not at the bottom?-->
 
+<div id="navMask">
+</div>
+
+
+<!--profile-->
+<div id="mainContainer" class="container">
+    <!--title-->
+    <div class="row justify-content-center">
+        <div class="col-sm-12">
+            <p>Ziqi's profile
+            </p>
+        </div>
+    </div>
+    <!--left part-->
+    <!--my photo-->
+    <div class="row justify-content-center">
+    <div class="col-sm-5">
+        <div class="row justify-content-start">
+            <div class="col-sm-10">
+                <img class="img-thumbnail" src="img/me.jpg" alt="ziqitang's photo"/>
+            </div>
+            <div class="w-100"></div>
+        </div>
+
+        <!--The link to my social media-->
+        <div class="row justify-content-center align-items-center">
+            <div class="col-sm-2 offset-sm-2">
+                <img width="20px" height="auto" src="img/message.jpg" alt="ziqitang's twitter"/>
+            </div>
+            <div class="col-sm-8">
+                <a id="message" href="#">Message</a>
+            </div>
+        </div>
+        <div class="row justify-content-center align-items-center">
+            <div class="col-sm-2 offset-sm-2">
+                <img width="20px" height="auto" src="img/twitter.png" alt="ziqitang's twitter"/>
+            </div>
+            <div class="col-sm-8">
+                <a id="twitter" href="#">Twitter</a>
+            </div>
+        </div>
+        <div class="row justify-content-center align-items-center">
+            <div class="col-sm-2 offset-sm-2">
+                <img width="20px" height="auto" src="img/github.jpg" alt="ziqitang's github"/>
+            </div>
+            <div class="col-sm-8">
+                <a id="github" href="#">Github</a>
+            </div>
+            <div class="w-100"></div>
+        </div>
+
+        <!--my contact info-->
+        <div class="row justify-content-start margintop">
+            <h5 class="col-sm-12">Contact me</h5>
+        </div>
+        <div class="row justify-content-start">
+            <span class="col-sm-12">Email: zit10@pitt.edu</span>
+            <span class="col-sm-12">Cell:  412-773-4353</span>
+
+        </div>
+    </div>
+
+
+    <div class="col-sm-6">
+    <!--right part-->
+        <div class="row justify-content-start">
+            <div class="col-sm-12 right1">
+                <h3>Basic Information</h3>
+            </div>
+        <div class="col-sm-11 offset-sm-1 right1">
+            <span>Country: China</span>
+        </div>
+        <div class="col-sm-11 offset-sm-1 right1">
+            <span>City: Shenzhen</span>
+        </div>
+        <div class="col-sm-11 offset-sm-1 right1">
+            <span>Major: Information Science General Track</span>
+        </div>
+        <div class="col-sm-11 offset-sm-1 right1">
+            <span>Hobbies: Swimming, Science fiction</span>
+        </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-sm-12 right1">
+                <h3>Education Information</h3>
+            </div>
+            <div class="col-sm-11 offset-sm-1 right1">
+                <span>Undergraduate: </span><a href="http://en.csu.edu.cn/">Central South University</a>
+            </div>
+            <div class="col-sm-11 offset-sm-1 right1">
+                <span>Graduate: </span><a href="https://www.pitt.edu/">University of Pittsburgh</a>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12 right1">
+                <h3>Work Experience</h3>
+            </div>
+            <div class="col-sm-11 offset-sm-1 right1">
+            <span>Internship:</span>
+            <a href="http://www.cuhk.edu.hk/english/index.html">The Chinese University of Hong Kong</a>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+
+<!--footer-->
+<div class="footer card-footer text-muted">
+    <p>@Ziqi Tang <span id="time"></span></p>
+</div>
+<script>
+    var d = new Date();
+    document.getElementById("time").innerHTML = '<'+d.getFullYear()+'>';
+    //call the function as soon as window is loaded to render mask and save the original height value
+    window.onload = function(){
+        getHeight();
+        expand();
+        mainElemHeight("mainContainer");
+    }
+    window.addEventListener('resize',resize);
+    window.addEventListener('resize',mainElemHeight);
+
+</script>
 </body>
 </html>

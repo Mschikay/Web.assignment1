@@ -1,76 +1,242 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="site-template.xsl"?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>BOOKING FLIGHT</title>
+    <title>personal website</title>
     <meta charset="utf-8"/>
-    <meta name="description" content="personal websites"/>
+    <meta name="description" content="front-end design of personal website"/>
     <meta name="author" content="ZiqiTang" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/photo.css" type="text/css"/>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="css/styles.css" type="text/css"/>
-    <link rel="stylesheet" href="css/log.css" type="text/css"/>
+    <link rel="stylesheet" href="css/MyInfo.css.css" type="text/css"/>
+    <script src="js/layout.js"></script>
 
-    <script>
-    </script>
+    <style>
+        #navBoard{
+            width: 100%;
+            height: auto;
+            position: fixed;
+            z-index: 999; /*Only when with "position" it is effective*/
+            /*background-color: greenyellow;*/
+        }
+        #navBoard #navContainer{
+        }
+        #navMask{
+            /*background-color: deepskyblue;*/
+            width: 100%;
+        }
+        #navContainer{
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+        #mainContainer{
+            margin-top: 8px;
+        }
+
+        .col-auto #albumReturn{
+            color: black;
+        }
+        .col-auto #albumReturn:hover{
+            background-color: purple;
+            color: white;
+        }
+        .row #albumsvg{
+            position: relative;
+            top: -10px;
+            height: 50px;
+            width: 100px;
+        }
+        .col-sm-12 > .photoinfo{
+            font-family: "Apple Braille";
+            font-size: small;
+            color: thistle;
+            border-bottom-style: solid;
+            border-bottom-color: thistle;
+            border-bottom-width: 1px;
+        }
+        .col-sm-3 img{
+            width: 100%;
+            height: auto;
+            margin: 4px;
+        }
+        #lb, #rb{
+            font-size: 10px;
+            border: none;
+            margin: 4px;
+        }
+        #lb:hover, #rb:hover{
+            border-radius: 4px;
+            background-color: purple;
+            cursor: pointer;
+        }
+        #submit{
+            font-size: 10px;
+            border-radius: 4px;
+            margin: 4px;
+        }
+        #submit:hover{
+            background-color: purple;
+            color: white;
+            cursor: pointer;
+        }
+        #commentDisplay .row{
+            margin: 2px 0;
+            border-bottom: thistle;
+            border-bottom-style: dashed;
+            border-bottom-width: 1px;
+        }
+        .col-sm-12 textarea{
+            width: 100%;
+        }
+    </style>
 </head>
 
 <body>
-<script src="js/top.js"></script>
+<!--top navigation bar-->
+<div class="card">
+    <div id="navBoard">
+        <div id="navContainer" class="container">
+            <div class="row justify-content-start">
+                <!--left-top name-->
+                <div class="col-sm-auto">
+                    <a class="text-dark bg-white" href="index.html">
+                        <h1 class="buttonnav buttonnav1">Ziqi Tang</h1>
+                    </a>
+                </div>
+                <!--left-top table-->
+                <div class="col-sm-auto" >
+                    <table class="text-dark bg-white" class="tableAttr">
+                        <tr>
+                            <th>IS</th>
+                            <th>Course</th>
+                        </tr>
+                        <tr>
+                            <td>General</td>
+                            <td>INFSCI 2560</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
 
-<div class="wholepart">
-    <div>
-        <h3 class="head">
-            In United Kingdom
-            <a href="#">&lt;&lt;return</a>
-            <svg >
-                <rect x="5" y="10" width="30" height="30"
-                      style="fill:mediumpurple;stroke:darkseagreen;stroke-width:5;fill-opacity:0.1;stroke-opacity:0.9" />
-                <rect x="35" y="10" width="30" height="30"
-                      style="fill:mediumpurple;stroke:darkseagreen;stroke-width:5;fill-opacity:0.1;stroke-opacity:0.9" />
-                <path d="M25 15 Q 35 10 45 15" stroke="gray" stroke-width="3" fill="transparent"/>
-                <path d="M25 25 Q 35 20 45 25" stroke="gray" stroke-width="3" fill="transparent"/>
-                <path d="M25 35 Q 35 30 45 35" stroke="gray" stroke-width="3" fill="transparent"/>
-            </svg>
-            <p class="photoinfo">Photos: 5 Viewed: 20 Comments:1 Created on <time>2018-09-10 08:57</time></p>
-        </h3>
-    </div>
+            <!--right-bottom navigation-->
+            <div class="row no-gutters justify-content-end">
+                <div class="col-sm-1 border-left buttonLoginMenu menu"  onmouseenter="expand()" onmouseleave="collapse()">
+                    <a href="loginaccount.html">Login</a>
+                    <div class="loginitem">
+                        <a href="loginaccount.html" target="_self">Account</a>
+                        <!--<a href="#">QR code</a>-->
+                    </div>
+                </div>
 
-    <div class="content">
-        <!--向左右翻页-->
-        <img src="img/uk1.jpeg" alt="uk"/>
-        <img src="img/uk2.jpg" alt="uk"/>
-        <img src="img/uk3.jpg" alt="uk"/>
-        <img src="img/uk8.jpeg" alt="uk"/>
-        <img src="img/uk5.jpg" alt="uk"/>
-        <img src="img/uk6.jpg" alt="uk"/>
-        <img src="img/uk7.jpg" alt="uk"/>
-        <img src="img/london.jpg" alt="uk"/>
-        <button class="rb">>></button>
-        <button class="lb">&lt;&lt;</button>
-    </div>
-
-    <div class="comment">
-
-        <h4>Comments</h4>
-        <textarea rows="3" maxlength="2000" \
-                  onfocus="if(value=='write down your words...'){value='';color='black';}"
-                  onblur="if (value ==''){value='write down your words...';color='#999999';}"></textarea>
-        <input type="submit" name="Submit" value="Submit"/>
-    </div>
-
-    <div>
-        <div class="word">
-            <h4>John</h4>
-            <p>Hi.</p>
-        </div>
-        <div class="word">
-            <h4>Jane</h4>
-            <p>Hello.</p>
+                <div class="col-sm-1  border-left buttonNavLi menu">
+                    <a href="photo.html" target="_self">Album</a>
+                </div>
+                <div class="col-sm-1 border-left buttonNavLi menu">
+                    <a href="log.html" target="_self">Log</a>
+                </div>
+                <div class="col-sm-1 border-left buttonNavLi menu">
+                    <a href="music.html" target="_self">Music</a>
+                </div>
+                <div id="aboutme" class="col-sm-1 border-left buttonNavLi menu">
+                    <a href="MyInfo.html" target="_self">About Me</a>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
-<footer>@Ziqi Tang</footer>
+<div id="navMask">
+</div>
+
+<div id="mainContainer" class="container justify-content-start align-items-top">
+    <br/><br/>
+    <div class="row">
+        <div class="col-auto">
+            <h5>In United Kingdom</h5>
+        </div>
+        <div class="col-auto">
+            <h5><a id="albumReturn" href="#"><< return</a></h5>
+        </div>
+        <div id="albumsvg">
+            <svg >
+                <rect x="5" y="10" width="30" height="30"
+                      style="fill:mediumpurple;stroke:thistle;stroke-width:5;fill-opacity:0.1;stroke-opacity:0.9" />
+                <rect x="35" y="10" width="30" height="30"
+                      style="fill:mediumpurple;stroke:thistle;stroke-width:5;fill-opacity:0.1;stroke-opacity:0.9" />
+                <path d="M25 15 Q 35 10 45 15" stroke="gray" stroke-width="3" fill="transparent"/>
+                <path d="M25 25 Q 35 20 45 25" stroke="gray" stroke-width="3" fill="transparent"/>
+                <path d="M25 35 Q 35 30 45 35" stroke="gray" stroke-width="3" fill="transparent"/>
+            </svg>
+        </div>
+    </div>
+    <div class="row justify-content-start align-items-center">
+        <div class="col-sm-12">
+            <p class="photoinfo">Photos: 5 Viewed: 20 Comments:1 Created on <time>2018-09-10 08:57</time></p>
+        </div>
+    </div>
+
+    <div id="photoContainer"class="container">
+        <div class="row">
+            <div class="col-sm-3"><img src="img/uk1.jpeg" alt="uk"/></div>
+            <div class="col-sm-3"><img src="img/uk2.jpg" alt="uk"/></div>
+            <div class="col-sm-3"><img src="img/uk3.jpg" alt="uk"/></div>
+            <div class="col-sm-3"><img src="img/uk8.jpeg" alt="uk"/></div>
+
+            <div class="col-sm-3"><img src="img/uk5.jpg" alt="uk"/></div>
+            <div class="col-sm-3"><img src="img/uk6.jpg" alt="uk"/></div>
+            <div class="col-sm-3"><img src="img/uk7.jpg" alt="uk"/></div>
+            <div class="col-sm-3"><img src="img/london.jpg" alt="uk"/></div>
+        </div>
+        <div class="row justify-content-center">
+            <!--向左右翻页-->
+            <button class="col-sm-1" id="lb">&lt;&lt;</button>
+            <button class="col-sm-1" id="rb">&gt;&gt;</button>
+        </div>
+    </div>
+
+    <div id="commentContainer" class="container">
+        <div class="row">
+            <div class="col-sm-12"><h4>Comments</h4></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <textarea rows="2" \
+                  onfocus="if(value=='write down your words...'){value='';color='black';}" \
+                  onblur="if (value ==''){value='write down your words...';color='#999999';}">
+                </textarea>
+            </div>
+        </div>
+        <input id="submit" type="submit" name="Submit" value="Submit"/>
+    </div>
+
+    <div id="commentDisplay" class="container">
+        <div class="row">
+            <h6 class="col-sm-12">John</h6>
+            <p class="col-sm-12">Hi.</p>
+        </div>
+        <div class="row">
+            <h6 class="col-sm-12">Jane</h6>
+            <p class="col-sm-12">Hello.</p>
+        </div>
+    </div>
+</div>
+
+<!--footer-->
+<div class="footer card-footer text-muted">
+    <p>@Ziqi Tang <span id="time"></span></p>
+</div>
+<script>
+    var d = new Date();
+    document.getElementById("time").innerHTML = '<'+d.getFullYear()+'>';
+    //call the function as soon as window is loaded to render mask and save the original height value
+    window.onload = function(){
+        getHeight();
+        expand();
+        mainElemHeight("mainContainer");
+    }
+    window.addEventListener('resize',resize);
+    window.addEventListener('resize',mainElemHeight);
+
+</script>
 </body>
 </html>
